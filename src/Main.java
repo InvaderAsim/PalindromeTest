@@ -1,14 +1,17 @@
+//https://github.com/InvaderAsim/PalindromeTest
+
+
 public class Main {
 
 
-    void main() {
+
         //Palindrome: Reads the same from left to right
         //Example: Race car, aka
 
 
         //Input value will be String
 //
-//        String str = "racecar";
+        String str = "racecar";
 //        IO.println(str);
 //        IO.println("String Length: " + str.length());
 //        IO.println("character at index 0: " + str.charAt(0));
@@ -24,13 +27,12 @@ public class Main {
 //        substr = substr.trim();
 //        IO.println(substr.length());
 
-    }
 
     //Define a recursive method that checks if a string is a palindrome string
 
     public static boolean CheckPalindromeString(String str){
 
-        //Base Case
+//        Base Case
         if(str.length() <= 1){
             return true;
 
@@ -41,6 +43,52 @@ public class Main {
             return CheckPalindromeString(str.substring(1, str.length()-1));
         }
     }
+
+    // Recursive function to reverse a number
+    static int recursive_func(int n, int rev) {
+
+        // Base condition
+        if (n < 10) {
+            return rev * 10 + n;
+        }
+
+        // Recursive case
+        int last_digit = n % 10;
+        rev = rev * 10 + last_digit;
+
+        return recursive_func(n / 10, rev);
+    }
+
+
+
+    void main(){
+
+        String str2 = "geeks";
+
+        IO.println("\"" + str + "\"" + " palindrome? " + CheckPalindromeString(str));
+        IO.println("\"" + str2 + "\"" + " palindrome? " + CheckPalindromeString(str2));
+
+        int n1 = 4993;
+        int n2 = 40055004;
+
+        int rev1 = recursive_func(n1, 0);
+        int rev2 = recursive_func(n2, 0);
+
+        if (n1 == rev1)
+            System.out.println("Palindrome number = Yes");
+        else
+            System.out.println("Palindrome number = No");
+
+        if (n2 == rev2)
+            System.out.println("Palindrome number = Yes");
+        else
+            System.out.println("Palindrome number = No");
+
+    }
+
+}
+
+
 
     //How can we know if a problem can be solved with recursion?
 
@@ -57,4 +105,3 @@ public class Main {
     //Reversing a string: add the value
     //Factorial calculation: multiply
     //Sum of digits of an integer value: 123 = 6, add the value returned by the recursive call
-}
